@@ -6,7 +6,7 @@ RSpec.describe "clients/show", type: :view do
       :first_name => "First Name",
       :last_name => "Last Name",
       :phone => "Phone",
-      :email => "Email"
+      :email => "email@example.com"
     ))
   end
 

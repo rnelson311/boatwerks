@@ -97,14 +97,16 @@ RSpec.describe ClientsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        {email: "johnsmith@smith.com"}
+        {last_name: "Johnson"}
       }
 
       it "updates the requested client" do
         client = Client.create! valid_attributes
-        put :update, params: {id: client.to_param, client: new_attributes}, session: valid_session
+        patch :update, params: {id: client, client: new_attributes}, session: valid_session
         client.reload
-        expect(response).to be_success
+        new_attributes.each_pair do |key, value|
+          expect(client[key]).to eq(value)
+        end
       end
 
       it "redirects to the client" do
