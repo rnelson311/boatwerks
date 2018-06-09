@@ -1,27 +1,29 @@
-%h1 Listing clients
-
-%table
-  %thead
+%br
+%h3 Clients List
+%br
+.row
+  .col
+    =paginate(@clients)
+  .col
+    =link_to 'New Client', new_client_path, :class => "btn btn-sm btn-primary text-white float-right"
+%table.table.table-striped
+  %thead.Primary
     %tr
-      %th First name
       %th Last name
+      %th First name
       %th Phone
       %th Email
-      %th
       %th
       %th
 
   %tbody
     - @clients.each do |client|
       %tr
-        %td= client.first_name
         %td= client.last_name
+        %td= client.first_name
         %td= client.phone
         %td= client.email
         %td= link_to 'Show', client
         %td= link_to 'Edit', edit_client_path(client)
-        %td= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
-
-= link_to 'New Client', new_client_path

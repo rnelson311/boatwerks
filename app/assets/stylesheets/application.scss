@@ -13,3 +13,11 @@
  */
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+
+.Primary {
+    background-color: #157EFB;
+}
+
+.Primary th {
+    color: #FFF;
+}
