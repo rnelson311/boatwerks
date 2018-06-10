@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @boat.name
+%p
+  %b Manufacturer:
+  = @boat.manufacturer
+%p
+  %b Model:
+  = @boat.model
+%p
+  %b Construction:
+  = @boat.construction
+%p
+  %b Boat type:
+  = @boat.boat_type
+%p
+  %b Identification:
+  = @boat.identification
+%p
+  %b Client:
+  = @boat.client
+
+= link_to 'Edit', edit_boat_path(@boat)
+\|
+= link_to 'Back', boats_path

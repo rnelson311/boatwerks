@@ -1,5 +1,6 @@
 class Client < ApplicationRecord
 
+  has_many :boats
   before_save :downcase_email
 
   validates :first_name,  presence: true, length: { maximum: 50 }

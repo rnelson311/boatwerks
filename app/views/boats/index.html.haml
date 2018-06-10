@@ -1,0 +1,33 @@
+%h1 Listing boats
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Manufacturer
+      %th Model
+      %th Construction
+      %th Boat type
+      %th Identification
+      %th Client
+      %th
+      %th
+      %th
+
+  %tbody
+    - @boats.each do |boat|
+      %tr
+        %td= boat.name
+        %td= boat.manufacturer
+        %td= boat.model
+        %td= boat.construction
+        %td= boat.boat_type
+        %td= boat.identification
+        %td= boat.client
+        %td= link_to 'Show', boat
+        %td= link_to 'Edit', edit_boat_path(boat)
+        %td= link_to 'Destroy', boat, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Boat', new_boat_path

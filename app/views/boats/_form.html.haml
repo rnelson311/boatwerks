@@ -1,0 +1,31 @@
+= form_for @boat do |f|
+  - if @boat.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@boat.errors.count, "error")} prohibited this boat from being saved:"
+      %ul
+        - @boat.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :manufacturer
+    = f.text_field :manufacturer
+  .field
+    = f.label :model
+    = f.text_field :model
+  .field
+    = f.label :construction
+    = f.text_field :construction
+  .field
+    = f.label :boat_type
+    = f.text_field :boat_type
+  .field
+    = f.label :identification
+    = f.text_field :identification
+  .field
+    = f.label :client
+    = f.text_field :client
+  .actions
+    = f.submit 'Save'
