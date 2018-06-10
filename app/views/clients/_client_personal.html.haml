@@ -1,0 +1,33 @@
+%br
+.row
+  .col
+    %p
+      %b Phone:
+      = @client.phone
+  .col
+    %p
+      %b Email:
+      = @client.email
+.row
+  .col
+    %p
+      %b Address 1:
+      = @client.address1
+  .col
+    %p
+      %b Address 2:
+      = @client.address2
+.row
+  .col
+    %p
+      %b City:
+      = @client.city
+  .col
+    %p
+      %b State:
+      = @client.state
+  .col
+    %p
+      %b Zipcode:
+      = @client.zip_code
+= link_to 'Edit', edit_client_path(@client), :class => 'btn btn-sm btn-primary text-white'
