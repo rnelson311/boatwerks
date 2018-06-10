@@ -5,8 +5,8 @@ RSpec.describe "clients/show", type: :view do
     @client = assign(:client, Client.create!(
       :first_name => "First Name",
       :last_name => "Last Name",
-      :phone => "Phone",
-      :email => "Email"
+      :phone => "1234567890",
+      :email => "email@example.com"
     ))
   end
 

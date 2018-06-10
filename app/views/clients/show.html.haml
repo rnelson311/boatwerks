@@ -1,18 +1,20 @@
-%p#notice= notice
+%br
+.row
+  .col
+    %h4= @client.name
+  .col
+    = link_to 'Back', clients_path, :class => 'btn btn-sm btn-primary text-white float-right'
 
-%p
-  %b First name:
-  = @client.first_name
-%p
-  %b Last name:
-  = @client.last_name
-%p
-  %b Phone:
-  = @client.phone
-%p
-  %b Email:
-  = @client.email
-
-= link_to 'Edit', edit_client_path(@client)
-\|
-= link_to 'Back', clients_path
+%br
+%nav
+  .nav.nav-tabs{:id => 'nav-tab', :role => 'tab-list'}
+    %a{:class => 'nav-item nav-link active', :id => 'nav-personal-tab', "data-toggle" => "tab", :href => "#nav-personal", :role => "tab", "aria-controls" => "nav-home", "aria-selected" => "true"} Personal
+    %a{:class => 'nav-item nav-link', :id => 'nav-boat-tab', "data-toggle" => "tab", :href => "#nav-boats", :role => "tab", "aria-controls" => "nav-home", "aria-selected" => "false"} Boats
+    %a{:class => 'nav-item nav-link', :id => 'nav-orders-tab', "data-toggle" => "tab", :href => "#nav-orders", :role => "tab", "aria-controls" => "nav-home", "aria-selected" => "false"} Orders
+.tab-content#nav-tabContent
+  .tab-pane.fade.show.active{:id => "nav-personal", :role => "tabpanel", "aria-labelledby" => "nav-personal-tab"}
+    = render 'client_personal'
+  .tab-pane.fade{:id => "nav-boats", :role => "tabpanel", "aria-labelledby" => "nav-boats-tab"}
+    %p Boat goodies will go here
+  .tab-pane.fade{:id => "nav-orders", :role => "tabpanel", "aria-labelledby" => "nav-orders-tab"}
+    %p Orders will go here
