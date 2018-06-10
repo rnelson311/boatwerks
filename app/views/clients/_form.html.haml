@@ -6,17 +6,32 @@
         - @client.errors.full_messages.each do |message|
           %li= message
 
-  .field
-    = f.label :first_name
-    = f.text_field :first_name
-  .field
-    = f.label :last_name
-    = f.text_field :last_name
-  .field
-    = f.label :phone
-    = f.text_field :phone
-  .field
-    = f.label :email
-    = f.text_field :email
+  .field.form-group-row
+    = f.label :first_name, 'First Name', :class => "col-sm-2"
+    = f.text_field :first_name, :class => 'col-sm-8'
+  .field.form-group-row
+    = f.label :last_name, :class => "col-sm-2"
+    = f.text_field :last_name, :class => 'col-sm-8'
+  .field.form-group-row
+    = f.label :phone, :class => "col-sm-2"
+    = f.text_field :phone, :class => 'col-sm-8'
+  .field.form-group-row
+    = f.label :email, :class => "col-sm-2"
+    = f.text_field :email, :class => 'col-sm-8'
+  .field.form-group-row
+    = f.label :address1, :class => "col-sm-2"
+    = f.text_field :address1, :class => 'col-sm-8'
+  .field.form-group-row
+    = f.label :address2, :class => "col-sm-2"
+    = f.text_field :address2, :class => 'col-sm-8'
+  .field.form-group-row
+    = f.label :city, :class => "col-sm-2"
+    = f.text_field :city, :class => 'col-sm-8'
+  .field.form-group-row
+    = f.label :state, :class => "col-sm-2"
+    = f.text_field :state, :class => 'col-sm-8'
+  .field.form-group-row
+    = f.label :zip_code, :class => "col-sm-2"
+    = f.text_field :zip_code, :class => 'col-sm-8'
   .actions
     = f.submit 'Save'
