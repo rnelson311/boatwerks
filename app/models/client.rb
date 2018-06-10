@@ -10,7 +10,16 @@ class Client < ApplicationRecord
             format: { with: VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false }
 
+  def name
+    [first_name, last_name].join(' ')
+  end
+
+  def phone=(val)
+    super(val.gsub(/[^0-9]/, ""))
+  end
+
   private
+
   def downcase_email
     self.email = email.downcase
   end
