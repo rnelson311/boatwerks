@@ -1,14 +1,19 @@
-%h1 Listing boats
-
-%table
-  %thead
+%br
+%h1 Boat List
+%br
+.row
+  .col
+    =paginate(@boats)
+  .col
+    = link_to 'New Boat', new_boat_path, :class => "btn btn-sm btn-primary text-white float-right"
+%table.table.table-striped
+  %thead.Primary
     %tr
-      %th Name
+      %th Boat Name
       %th Manufacturer
       %th Model
-      %th Construction
-      %th Boat type
-      %th Identification
+      %th Boat Type
+      %th Vessel ID
       %th Client
       %th
       %th
@@ -17,17 +22,14 @@
   %tbody
     - @boats.each do |boat|
       %tr
-        %td= boat.name
+        %td= boat.name.humanize
         %td= boat.manufacturer
         %td= boat.model
-        %td= boat.construction
-        %td= boat.boat_type
+        %td= boat.boat_type.humanize
         %td= boat.identification
-        %td= boat.client
+        %td= boat.client.name
         %td= link_to 'Show', boat
         %td= link_to 'Edit', edit_boat_path(boat)
         %td= link_to 'Destroy', boat, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
-
-= link_to 'New Boat', new_boat_path

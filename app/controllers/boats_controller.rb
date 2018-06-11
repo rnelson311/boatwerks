@@ -4,7 +4,7 @@ class BoatsController < ApplicationController
   # GET /boats
   # GET /boats.json
   def index
-    @boats = Boat.all
+    @boats = Boat.order('name ASC').page(params[:page]).per(10)
   end
 
   # GET /boats/1
