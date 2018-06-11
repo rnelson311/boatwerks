@@ -1,5 +1,5 @@
-#accordion
-  - @client.boats.each do |boat|
+- @client.boats.each do |boat|
+  %div{:id => "accordion_#{boat.id}"}
     .card.mt-3.border-primary
       .card-header.bg-primary{:id => "collapse_#{boat.id}"}
         .row
@@ -7,15 +7,45 @@
             %button.btn-xs{"data-target" => "#collapse_#{boat.id}_target", "data-toggle" => "collapse"}
               +
           .col
-            %h6= boat.name.humanize
-      .collapse{:id => "collapse_#{boat.id}_target", "aria-labelledby" => "collapse_#{boat.id}", "data-parent" => "#accordion"}
+            %h5= boat.name.humanize
+      .collapse{:id => "collapse_#{boat.id}_target", "aria-labelledby" => "collapse_#{boat.id}", "data-parent" => "#accordion_#{boat.id}"}
         %ul.list-group.list-group-flush
           %li.list-group-item
-            %b Contact Preference:
-            = boat.manufacturer
+            .row
+              .col
+                %b Manufacturer:
+                = boat.manufacturer
+              .col
+                %b Model:
+                = boat.model
+              .col
+                %b Year: Need to add year to boats
+              .col
+                %b Hailing Port:
+                = boat.hailing_port
           %li.list-group-item
-            %b Email:
-            = boat.model
+            .row
+              .col
+                %b Type:
+                = boat.boat_type.humanize
+              .col
+                %b Configuration:
+                = boat.configuration.humanize
+              .col
+                %b Construction:
+                = boat.construction.humanize
+              .col
           %li.list-group-item
-            %b Phone:
-            = boat.boat_type.humanize
+            .row
+              .col
+                %b Engines:
+                = boat.engine
+              .col
+                %b Engine Count:
+                = boat.engine_count
+              .col
+                %b Propulsion:
+                = boat.propulsion.humanize
+              .col
+                %b Fuel Type:
+                = boat.fuel_type.humanize
