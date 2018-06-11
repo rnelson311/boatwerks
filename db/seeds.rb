@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-99.times do
+20.times do
   FactoryBot.create(:client, first_name: Faker::Name.first_name,
                     last_name: Faker::Name.last_name,
                     email: Faker::Internet.email,
@@ -17,4 +17,23 @@
                     city: Faker::Address.city,
                     state: Faker::Address.state,
                     zip_code: Faker::Address.zip_code)
+end
+
+clients = Client.all
+clients.each do |client|
+  Random.new.rand(3).times do
+    Boat.create!(name: Faker::Dune.character,
+                 manufacturer: Faker::Vehicle.manufacture,
+                 model: Faker::Ancient.titan,
+                 boat_type: %w(power sail).sample,
+                 identification: Faker::Code.asin,
+                 construction: %w(fiber wood cement other).sample,
+                 configuration: %w(ketch sloop cutty trawler sedan other).sample,
+                 fuel_type: %w(gas diesel bio).sample,
+                 propulsion: %w(inboard, outboard, other).sample,
+                 engine: Faker::StarWars.call_sign,
+                 engine_count: Random.new.rand(10),
+                 hailing_port: Faker::Address.city,
+                 client_id: client.id)
+  end
 end
