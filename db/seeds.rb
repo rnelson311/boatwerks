@@ -30,10 +30,11 @@ clients.each do |client|
                  construction: %w(fiber wood cement other).sample,
                  configuration: %w(ketch sloop cutty trawler sedan other).sample,
                  fuel_type: %w(gas diesel bio).sample,
-                 propulsion: %w(inboard, outboard, other).sample,
+                 propulsion: %w(inboard outboard other).sample,
                  engine: Faker::StarWars.call_sign,
                  engine_count: Random.new.rand(10),
                  hailing_port: Faker::Address.city,
+                 year: rand(1950..2018),
                  client_id: client.id)
   end
 end
