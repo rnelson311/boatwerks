@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "boats/index", type: :view do
   before(:each) do
+    client1 = create(:client, email: 'test@test.com')
+    client2 = create(:client, email: 'example@exapmple.com')
     assign(:boats, [
       Boat.create!(
         :name => "Name",
@@ -10,7 +12,7 @@ RSpec.describe "boats/index", type: :view do
         :construction => "Construction",
         :boat_type => "Boat Type",
         :identification => "Identification",
-        :client => nil
+        :client => client1
       ),
       Boat.create!(
         :name => "Name",
@@ -19,7 +21,7 @@ RSpec.describe "boats/index", type: :view do
         :construction => "Construction",
         :boat_type => "Boat Type",
         :identification => "Identification",
-        :client => nil
+        :client => client2
       )
     ])
   end
@@ -32,6 +34,5 @@ RSpec.describe "boats/index", type: :view do
     assert_select "tr>td", :text => "Construction".to_s, :count => 2
     assert_select "tr>td", :text => "Boat Type".to_s, :count => 2
     assert_select "tr>td", :text => "Identification".to_s, :count => 2
-    assert_select "tr>td", :text => nil.to_s, :count => 2
   end
 end

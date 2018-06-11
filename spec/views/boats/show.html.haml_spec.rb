@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "boats/show", type: :view do
   before(:each) do
+    client = create(:client)
     @boat = assign(:boat, Boat.create!(
       :name => "Name",
       :manufacturer => "Manufacturer",
@@ -9,7 +10,7 @@ RSpec.describe "boats/show", type: :view do
       :construction => "Construction",
       :boat_type => "Boat Type",
       :identification => "Identification",
-      :client => nil
+      :client => client
     ))
   end
 

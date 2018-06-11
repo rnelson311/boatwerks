@@ -2,15 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "boats/edit", type: :view do
   before(:each) do
-    @boat = assign(:boat, Boat.create!(
-      :name => "MyString",
-      :manufacturer => "MyString",
-      :model => "MyString",
-      :construction => "MyString",
-      :boat_type => "MyString",
-      :identification => "MyString",
-      :client => nil
-    ))
+    @client = create(:client)
+    @boat = create(:boat, client: @client)
   end
 
   it "renders the edit boat form" do
@@ -29,8 +22,6 @@ RSpec.describe "boats/edit", type: :view do
       assert_select "input[name=?]", "boat[boat_type]"
 
       assert_select "input[name=?]", "boat[identification]"
-
-      assert_select "input[name=?]", "boat[client_id]"
     end
   end
 end

@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "boats/new", type: :view do
   before(:each) do
+    client = create(:client)
     assign(:boat, Boat.new(
       :name => "MyString",
       :manufacturer => "MyString",
@@ -9,7 +10,7 @@ RSpec.describe "boats/new", type: :view do
       :construction => "MyString",
       :boat_type => "MyString",
       :identification => "MyString",
-      :client => nil
+      :client => client
     ))
   end
 
@@ -30,7 +31,6 @@ RSpec.describe "boats/new", type: :view do
 
       assert_select "input[name=?]", "boat[identification]"
 
-      assert_select "input[name=?]", "boat[client_id]"
     end
   end
 end
