@@ -22,9 +22,9 @@ end
 clients = Client.all
 clients.each do |client|
   Random.new.rand(3).times do
-    Boat.create!(name: Faker::Dune.character,
-                 manufacturer: Faker::Vehicle.manufacture,
-                 model: Faker::Ancient.titan,
+    Boat.create!(name: Faker::Lorem.word,
+                 manufacturer: Faker::StarWars.vehicle,
+                 model: Faker::StarWars.droid,
                  boat_type: %w(power sail).sample,
                  identification: Faker::Code.asin,
                  construction: %w(fiber wood cement other).sample,
