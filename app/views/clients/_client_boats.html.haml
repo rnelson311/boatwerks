@@ -12,40 +12,44 @@
         %ul.list-group.list-group-flush
           %li.list-group-item
             .row
-              .col
+              .col-3
                 %b Manufacturer:
                 = boat.manufacturer
-              .col
+              .col-3
                 %b Model:
                 = boat.model
-              .col
-                %b Year: Need to add year to boats
-              .col
+              .col-3
+                %b Year:
+                = boat.year
+              .col-3
+                %b Registered #:
+                = boat.identification
+          %li.list-group-item
+            .row
+              .col-3
                 %b Hailing Port:
                 = boat.hailing_port
-          %li.list-group-item
-            .row
-              .col
+              .col-3
                 %b Type:
                 = boat.boat_type.humanize
-              .col
+              .col-3
                 %b Configuration:
                 = boat.configuration.humanize
-              .col
+              .col-3
                 %b Construction:
                 = boat.construction.humanize
-              .col
+              .col-3
           %li.list-group-item
             .row
-              .col
+              .col-3
                 %b Engines:
                 = boat.engine
-              .col
+              .col-3
                 %b Engine Count:
                 = boat.engine_count
-              .col
+              .col-3
                 %b Propulsion:
                 = boat.propulsion.humanize
-              .col
+              .col-3
                 %b Fuel Type:
                 = boat.fuel_type.humanize
