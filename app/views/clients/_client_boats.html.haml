@@ -1,0 +1,21 @@
+#accordion
+  - @client.boats.each do |boat|
+    .card.mt-3.border-primary
+      .card-header.bg-primary{:id => "collapse_#{boat.id}"}
+        .row
+          %div{:class => "col-.5"}
+            %button.btn-xs{"data-target" => "#collapse_#{boat.id}_target", "data-toggle" => "collapse"}
+              +
+          .col
+            %h6= boat.name.humanize
+      .collapse{:id => "collapse_#{boat.id}_target", "aria-labelledby" => "collapse_#{boat.id}", "data-parent" => "#accordion"}
+        %ul.list-group.list-group-flush
+          %li.list-group-item
+            %b Contact Preference:
+            = boat.manufacturer
+          %li.list-group-item
+            %b Email:
+            = boat.model
+          %li.list-group-item
+            %b Phone:
+            = boat.boat_type.humanize
