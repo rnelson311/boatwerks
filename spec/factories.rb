@@ -13,6 +13,7 @@ FactoryBot.define do
     boat_type "power"
     identification Faker::Code.asin
     configuration 'cutty'
+    construction 'wood'
     fuel_type 'gas'
     propulsion 'outboard'
     engine 'cummins 4bt'
