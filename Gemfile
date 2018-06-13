@@ -19,6 +19,8 @@ gem "haml-rails", "~> 1.0"
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'faker'
 gem 'factory_bot_rails'
+gem 'font-awesome-rails'
+gem 'font-awesome-sass'
 
 
 group :development, :test do
