@@ -1,11 +1,11 @@
 FactoryBot.define do
   factory :marina do
-    name "MyString"
-    address1 "MyString"
-    address2 "MyString"
-    city "MyString"
-    state "MyString"
-    zip_code "MyString"
+    name Faker::Company.name
+    address1 Faker::Address.street_address
+    address2 Faker::Address.secondary_address
+    city Faker::Address.city
+    state Faker::Address.state
+    zip_code Faker::Address.zip_code
   end
   factory :client do
     first_name 'John'
@@ -28,5 +28,6 @@ FactoryBot.define do
     engine_count 1
     hailing_port 'San Diego'
     association :client, factory: :client
+    association :marina, factory: :marina
   end
 end
