@@ -4,7 +4,7 @@ class MarinasController < ApplicationController
   # GET /marinas
   # GET /marinas.json
   def index
-    @marinas = Marina.all
+    @marinas = Marina.order('name ASC').page(params[:page]).per(10)
   end
 
   # GET /marinas/1
