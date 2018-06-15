@@ -1,14 +1,20 @@
-%h1 Listing marinas
-
-%table
-  %thead
+%br
+%h1 Marinas
+%br
+.row
+  .col
+    =paginate(@marinas)
+  .col
+    = link_to '+ Add Marina', new_marina_path, :class => "btn btn-sm btn-primary text-white float-right"
+%table.table.table-striped
+  %thead.Primary
     %tr
-      %th Name
-      %th Address1
-      %th Address2
+      %th Marina Name
+      %th Address 1
+      %th Address 2
       %th City
       %th State
-      %th Zip code
+      %th Zipcode
       %th
       %th
       %th
@@ -22,10 +28,6 @@
         %td= marina.city
         %td= marina.state
         %td= marina.zip_code
-        %td= link_to 'Show', marina
+        %td= link_to 'View', marina
         %td= link_to 'Edit', edit_marina_path(marina)
-        %td= link_to 'Destroy', marina, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Marina', new_marina_path
+        %td= link_to 'Delete', marina, method: :delete, data: { confirm: 'Are you sure?' }
