@@ -28,7 +28,7 @@
         %td= boat.boat_type.humanize
         %td= boat.identification
         %td= boat.client.name
-        %td= link_to 'Show', boat
+        %td= link_to 'View', boat
         %td= link_to 'Edit', edit_boat_path(boat)
         %td= link_to 'Delete', boat, method: :delete, data: { confirm: 'Are you sure?' }
 

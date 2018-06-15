@@ -8,6 +8,10 @@
               +
           .col
             %h5= boat.name.humanize
+          .col
+            Marina information will go here
+          .col
+            = link_to 'View', boat, class: 'btn btn-sm float-right text-white'
       .collapse{:id => "collapse_#{boat.id}_target", "aria-labelledby" => "collapse_#{boat.id}", "data-parent" => "#accordion_#{boat.id}"}
         %ul.list-group.list-group-flush
           %li.list-group-item
