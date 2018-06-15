@@ -1,0 +1,2 @@
+class Marina < ApplicationRecord
+end

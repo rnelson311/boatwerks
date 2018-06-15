@@ -1,0 +1,31 @@
+%h1 Listing marinas
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Address1
+      %th Address2
+      %th City
+      %th State
+      %th Zip code
+      %th
+      %th
+      %th
+
+  %tbody
+    - @marinas.each do |marina|
+      %tr
+        %td= marina.name
+        %td= marina.address1
+        %td= marina.address2
+        %td= marina.city
+        %td= marina.state
+        %td= marina.zip_code
+        %td= link_to 'Show', marina
+        %td= link_to 'Edit', edit_marina_path(marina)
+        %td= link_to 'Destroy', marina, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Marina', new_marina_path

@@ -1,0 +1,28 @@
+= form_for @marina do |f|
+  - if @marina.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@marina.errors.count, "error")} prohibited this marina from being saved:"
+      %ul
+        - @marina.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :address1
+    = f.text_field :address1
+  .field
+    = f.label :address2
+    = f.text_field :address2
+  .field
+    = f.label :city
+    = f.text_field :city
+  .field
+    = f.label :state
+    = f.text_field :state
+  .field
+    = f.label :zip_code
+    = f.text_field :zip_code
+  .actions
+    = f.submit 'Save'

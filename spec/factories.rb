@@ -1,4 +1,12 @@
 FactoryBot.define do
+  factory :marina do
+    name "MyString"
+    address1 "MyString"
+    address2 "MyString"
+    city "MyString"
+    state "MyString"
+    zip_code "MyString"
+  end
   factory :client do
     first_name 'John'
     last_name 'Smith'

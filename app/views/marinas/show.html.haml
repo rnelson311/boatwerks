@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @marina.name
+%p
+  %b Address1:
+  = @marina.address1
+%p
+  %b Address2:
+  = @marina.address2
+%p
+  %b City:
+  = @marina.city
+%p
+  %b State:
+  = @marina.state
+%p
+  %b Zip code:
+  = @marina.zip_code
+
+= link_to 'Edit', edit_marina_path(@marina)
+\|
+= link_to 'Back', marinas_path
