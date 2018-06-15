@@ -1,0 +1,55 @@
+- @client.boats.each do |boat|
+  %div{:id => "accordion_#{boat.id}"}
+    .card.mt-3.border-primary
+      .card-header.bg-primary{:id => "collapse_#{boat.id}"}
+        .row
+          %div{:class => "col-.5"}
+            %button.btn-xs{"data-target" => "#collapse_#{boat.id}_target", "data-toggle" => "collapse"}
+              +
+          .col
+            %h5= boat.name.humanize
+      .collapse{:id => "collapse_#{boat.id}_target", "aria-labelledby" => "collapse_#{boat.id}", "data-parent" => "#accordion_#{boat.id}"}
+        %ul.list-group.list-group-flush
+          %li.list-group-item
+            .row
+              .col-3
+                %b Manufacturer:
+                = boat.manufacturer
+              .col-3
+                %b Model:
+                = boat.model
+              .col-3
+                %b Year:
+                = boat.year
+              .col-3
+                %b Registered #:
+                = boat.identification
+          %li.list-group-item
+            .row
+              .col-3
+                %b Hailing Port:
+                = boat.hailing_port
+              .col-3
+                %b Type:
+                = boat.boat_type.humanize
+              .col-3
+                %b Configuration:
+                = boat.configuration.humanize
+              .col-3
+                %b Construction:
+                = boat.construction.humanize
+              .col-3
+          %li.list-group-item
+            .row
+              .col-3
+                %b Engines:
+                = boat.engine
+              .col-3
+                %b Engine Count:
+                = boat.engine_count
+              .col-3
+                %b Propulsion:
+                = boat.propulsion.humanize
+              .col-3
+                %b Fuel Type:
+                = boat.fuel_type.humanize

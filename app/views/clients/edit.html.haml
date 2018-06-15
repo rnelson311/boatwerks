@@ -1,8 +1,9 @@
 %br
 %h3= @client.name
 %br
-= render 'form'
-%br
-= link_to 'Show', @client
+= link_to "Back to #{@client.name}", @client, class: "btn btn-sm btn-primary text white"
 \|
-= link_to 'Back', clients_path
+= link_to 'Back to Client List', clients_path, class: "btn btn-sm btn-primary text-white"
+%br
+= render 'form'
+

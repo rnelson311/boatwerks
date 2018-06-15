@@ -3,7 +3,7 @@
   .col
     %h4= @client.name
   .col
-    = link_to 'Back', clients_path, :class => 'btn btn-sm btn-primary text-white float-right'
+    = link_to 'Back to Clients List', clients_path, :class => 'btn btn-sm btn-primary text-white float-right'
 
 %br
 %nav
@@ -15,6 +15,6 @@
   .tab-pane.fade.show.active{:id => "nav-personal", :role => "tabpanel", "aria-labelledby" => "nav-personal-tab"}
     = render 'client_personal'
   .tab-pane.fade{:id => "nav-boats", :role => "tabpanel", "aria-labelledby" => "nav-boats-tab"}
-    %p Boat goodies will go here
+    = render 'client_boats'
   .tab-pane.fade{:id => "nav-orders", :role => "tabpanel", "aria-labelledby" => "nav-orders-tab"}
     %p Orders will go here

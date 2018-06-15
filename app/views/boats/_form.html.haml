@@ -1,0 +1,53 @@
+= form_for @boat do |f|
+  - if @boat.errors.any?
+    = render = errors_for(@boat)
+  %br
+  .form-group-row
+    = f.label :client_id, 'Client', :class => 'col-sm-2'
+    - if @boat.client != nil
+      = f.text_field :client_id, :value => Client.find(@boat.client.id).name, :disabled => true, :class => "col-sm-6"
+      = f.hidden_field :client_id, :value => @boat.client.id
+    - else
+      = f.collection_select(:client_id, Client.all, :id, :name, class: "form-control")
+  .form-group-row
+    = f.label :name, 'Boat Name', :class => 'col-sm-2'
+    = f.text_field :name, :class => 'col-sm-6'
+  .form-group-row
+    = f.label :manufacturer, 'Manufacturer', :class => 'col-sm-2'
+    = f.text_field :manufacturer, :class => 'col-sm-6'
+  .form-group-row
+    = f.label :model, 'Model', :class => 'col-sm-2'
+    = f.text_field :model, :class => 'col-sm-6'
+  .form-group-row
+    = f.label :year, 'Year', :class => 'col-sm-2'
+    = f.text_field :year, :class => 'col-sm-6'
+  .form-group-row
+    = f.label :identification, 'Registration #', :class => 'col-sm-2'
+    = f.text_field :identification, :class => 'col-sm-6'
+  .form-group-row
+    = f.label :boat_type, 'Boat Type', :class => 'col-sm-2'
+    = f.select :boat_type, Boat::BOAT_TYPES, :class => 'col-sm-6'
+  .form-group-row
+    = f.label :configuration, 'Boat Configuration', :class => 'col-sm-2'
+    = f.select :configuration, Boat::CONFIGURATION, :class => 'col-sm-6'
+  .form-group-row
+    = f.label :construction, 'Boat Construction', :class => 'col-sm-2'
+    = f.select :construction, Boat::CONSTRUCTION, :class => 'col-sm-6'
+  .form-group-row
+    = f.label :engine, 'Engines', :class => 'col-sm-2'
+    = f.text_field :engine, :class => 'col-sm-6'
+  .form-group-row
+    = f.label :engine_count, '# of Engines', :class => 'col-sm-2'
+    = f.number_field :engine_count, :class => 'col-sm-6'
+  .form-group-row
+    = f.label :propulsion, 'Propulsion', :class => 'col-sm-2'
+    = f.select :propulsion, Boat::PROPULSION, :class => 'col-sm-6'
+  .form-group-row
+    = f.label :fuel_type, 'Fuel Type', :class => 'col-sm-2'
+    = f.select :fuel_type, Boat::FUEL_TYPE, :class => 'col-sm-6'
+  .form-group-row
+    = f.label :hailing_port, 'Hailing Port', :class => 'col-sm-2'
+    = f.text_field :hailing_port, :class => 'col-sm-6'
+  %br
+  .actions
+    = f.submit 'Save', :class => "btn btn-sm btn-primary text-white"

@@ -17,11 +17,12 @@ gem 'jquery-rails'
 gem 'haml'
 gem "haml-rails", "~> 1.0"
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'faker'
+gem 'factory_bot_rails'
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'factory_bot_rails'
-  gem 'faker'
   gem 'pry-rails'
   gem 'rspec'
   gem 'rspec-rails'

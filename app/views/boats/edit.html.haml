@@ -1,0 +1,8 @@
+%br
+%h3 Edit #{@boat.name}
+%br
+= link_to "Back to #{@boat.name}", @boat, class: 'btn btn-sm btn-primary'
+\|
+= link_to 'Back to Boats List', boats_path, class: 'btn btn-sm btn-primary'
+%br
+= render 'form'
