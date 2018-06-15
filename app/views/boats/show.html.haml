@@ -1,48 +1,57 @@
-%p#notice= notice
-
-%p
-  %b Boat Name:
-  = @boat.name
-%p
-  %b Manufacturer:
-  = @boat.manufacturer
-%p
-  %b Model:
-  = @boat.model
-%p
-  %b Year:
-  = @boat.year
-%p
-  %b Registration #:
-  = @boat.identification
-%p
-  %b Boat Type:
-  = @boat.boat_type
-%p
-  %b Boat Configuration:
-  = @boat.configuration
-%p
-  %b Boat Construction:
-  = @boat.construction
-%p
-  %b Engines:
-  = @boat.engine
-%p
-  %b # of Engines:
-  = @boat.engine_count
-%p
-  %b Propulsion:
-  = @boat.propulsion
-%p
-  %b Fuel Type:
-  = @boat.fuel_type
-%p
-  %b Hailing Port:
-  = @boat.hailing_port
-%p
-  %b Client:
-  = @boat.client.name
-
-= link_to 'Edit', edit_boat_path(@boat)
+%br
+%h3 #{@boat.name}
+%br
+= link_to "Edit #{@boat.name}", edit_boat_path(@boat), class: 'btn btn-sm btn-primary text-white'
 \|
-= link_to 'Back', boats_path
+= link_to 'Back to Boats List', boats_path, class: 'btn btn-sm btn-primary text-white'
+%br
+%br
+.card
+  .card-header.bg-primary.text-white
+    .row
+      .col
+        %strong Owner:
+        = @boat.client.name
+      .col
+        %strong Hailing Port:
+        = @boat.hailing_port
+  .card-body
+    .row
+      .col
+        %strong Manufacturer:
+        = @boat.manufacturer
+      .col
+        %strong Model:
+        = @boat.model
+      .col
+        %strong Year:
+        = @boat.year
+      .col
+        %strong Registration #
+        = @boat.identification
+    %hr
+    .row
+      .col
+        %strong Boat Type:
+        = @boat.boat_type.humanize
+      .col
+        %strong Boat Configuration:
+        = @boat.configuration.humanize
+      .col
+        %strong Boat Construction:
+        = @boat.construction.humanize
+      .col
+    %hr
+    .row
+      .col
+        %strong Engines:
+        = @boat.engine
+      .col
+        %strong # of Engines:
+        = @boat.engine_count
+      .col
+        %strong Propulsion:
+        = @boat.propulsion.humanize
+      .col
+        %strong Fuel Type:
+        = @boat.fuel_type.humanize

@@ -5,7 +5,7 @@
   .col
     =paginate(@boats)
   .col
-    = link_to 'New Boat', new_boat_path, :class => "btn btn-sm btn-primary text-white float-right"
+    = link_to '+ Add Boat', new_boat_path, :class => "btn btn-sm btn-primary text-white float-right"
 %table.table.table-striped
   %thead.Primary
     %tr
@@ -30,6 +30,6 @@
         %td= boat.client.name
         %td= link_to 'Show', boat
         %td= link_to 'Edit', edit_boat_path(boat)
-        %td= link_to 'Destroy', boat, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Delete', boat, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
