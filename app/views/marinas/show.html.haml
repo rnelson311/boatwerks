@@ -1,9 +1,9 @@
 %br
 %h3 #{@marina.name}
 %br
-= link_to 'Edit', edit_marina_path(@marina), class: 'btn btn-sm btn-primary text-white'
+= link_to "Edit #{@marina.name}", edit_marina_path(@marina), class: 'btn btn-sm btn-primary text-white'
 \|
-= link_to 'Back', marinas_path, class: 'btn btn-sm btn-primary text-white'
+= link_to 'Back to Marinas List', marinas_path, class: 'btn btn-sm btn-primary text-white'
 %br
 %br
 .card
@@ -33,7 +33,7 @@
           %button.btn-xs{"data-target" => "#collapse_target", "data-toggle" => "collapse"}
             +
         .col.text-white
-          %h5 Boats Located Here
+          %h5 Docked Boats
     .collapse{:id => "collapse_target", "aria-labelledby" => "collapse", "data-parent" => "#accordion"}
       %table.table.table-striped
         %thead.Primary
