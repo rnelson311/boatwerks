@@ -10,7 +10,7 @@
             %h5= boat.name.humanize
           .col-6.text-white
             %strong Marina:
-            = boat.marina.display_address
+            = boat.marina.name + " " + boat.marina.display_address
           .col
             = link_to 'View', boat, class: 'btn btn-sm float-right text-white'
       .collapse{:id => "collapse_#{boat.id}_target", "aria-labelledby" => "collapse_#{boat.id}", "data-parent" => "#accordion_#{boat.id}"}
