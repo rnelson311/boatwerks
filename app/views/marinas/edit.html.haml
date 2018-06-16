@@ -1,7 +1,8 @@
-%h1 Editing marina
-
-= render 'form'
-
-= link_to 'Show', @marina
+%br
+%h1 Editing #{@marina.name}
+%br
+= link_to "Back to #{@marina.name}", @marina, class: 'btn btn-sm btn-primary'
 \|
-= link_to 'Back', marinas_path
+= link_to 'Back to Marinass List', marinas_path, class: 'btn btn-sm btn-primary'
+%br
+= render 'form'

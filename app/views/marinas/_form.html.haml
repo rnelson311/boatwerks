@@ -1,28 +1,25 @@
 = form_for @marina do |f|
   - if @marina.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@marina.errors.count, "error")} prohibited this marina from being saved:"
-      %ul
-        - @marina.errors.full_messages.each do |message|
-          %li= message
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :address1
-    = f.text_field :address1
-  .field
-    = f.label :address2
-    = f.text_field :address2
-  .field
-    = f.label :city
-    = f.text_field :city
-  .field
-    = f.label :state
-    = f.text_field :state
-  .field
-    = f.label :zip_code
-    = f.text_field :zip_code
+    = render = errors_for(@marina)
+  %br
+  .form-group-row
+    = f.label :name, 'Marina Name', :class => 'col-sm-2'
+    = f.text_field :name, :class => 'col-sm-6'
+  .form-group-row
+    = f.label :address1, 'Address 1', :class => 'col-sm-2'
+    = f.text_field :address1, :class => 'col-sm-6'
+  .form-group-row
+    = f.label :address2, 'Address2', :class => 'col-sm-2'
+    = f.text_field :address2, :class => 'col-sm-6'
+  .form-group-row
+    = f.label :city, 'City', :class => 'col-sm-2'
+    = f.text_field :city, :class => 'col-sm-6'
+  .form-group-row
+    = f.label :state, 'State', :class => 'col-sm-2'
+    = f.text_field :state, :class => 'col-sm-6'
+  .form-group-row
+    = f.label :zip_code, 'Zip Code', :class => 'col-sm-2'
+    = f.text_field :zip_code, :class => 'col-sm-6'
+  %br
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', :class => "btn btn-sm btn-primary text-white"
