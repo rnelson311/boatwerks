@@ -1,0 +1,58 @@
+%br
+%h3 #{@marina.name}
+%br
+= link_to "Edit #{@marina.name}", edit_marina_path(@marina), class: 'btn btn-sm btn-primary text-white'
+\|
+= link_to 'Back to Marinas List', marinas_path, class: 'btn btn-sm btn-primary text-white'
+%br
+%br
+.card
+  .card-header.bg-primary
+  %ul.list-group.list-group-flush
+    %li.list-group-item
+      %b Address 1:
+      = @marina.address1
+    %li.list-group-item
+      %b Address 2:
+      = @marina.address2
+    %li.list-group-item
+      %b City:
+      = @marina.city
+    %li.list-group-item
+      %b State:
+      = @marina.state
+    %li.list-group-item
+      %b Zip Code:
+      = @marina.zip_code
+%br
+%div{:id => "accordian"}
+  .card.mt-3.border_primary
+    .card-header.bg-primary{:id => "collapse"}
+      .row
+        %div{:class => "col-.5"}
+          %button.btn-xs{"data-target" => "#collapse_target", "data-toggle" => "collapse"}
+            +
+        .col.text-white
+          %h5 Docked Boats
+    .collapse{:id => "collapse_target", "aria-labelledby" => "collapse", "data-parent" => "#accordion"}
+      %table.table.table-striped
+        %thead.Primary
+          %tr
+            %th Boat Name
+            %th Manufacturer
+            %th Model
+            %th Boat Type
+            %th Vessel ID
+            %th Client
+            %th
+
+        %tbody
+          - @marina.boats.each do |boat|
+            %tr
+              %td= boat.name.humanize
+              %td= boat.manufacturer
+              %td= boat.model
+              %td= boat.boat_type.humanize
+              %td= boat.identification
+              %td= boat.client.name
+              %td= link_to 'View', boat

@@ -1,0 +1,33 @@
+%br
+%h1 Marinas
+%br
+.row
+  .col
+    =paginate(@marinas)
+  .col
+    = link_to '+ Add Marina', new_marina_path, :class => "btn btn-sm btn-primary text-white float-right"
+%table.table.table-striped
+  %thead.Primary
+    %tr
+      %th Marina Name
+      %th Address 1
+      %th Address 2
+      %th City
+      %th State
+      %th Zipcode
+      %th
+      %th
+      %th
+
+  %tbody
+    - @marinas.each do |marina|
+      %tr
+        %td= marina.name
+        %td= marina.address1
+        %td= marina.address2
+        %td= marina.city
+        %td= marina.state
+        %td= marina.zip_code
+        %td= link_to 'View', marina
+        %td= link_to 'Edit', edit_marina_path(marina)
+        %td= link_to 'Delete', marina, method: :delete, data: { confirm: 'Are you sure?' }

@@ -18,6 +18,16 @@
                     state: Faker::Address.state,
                     zip_code: Faker::Address.zip_code)
 end
+5.times do
+  FactoryBot.create(:marina, name: Faker::Company.name,
+                    address1: Faker::Address.street_address,
+                    address2: Faker::Address.secondary_address,
+                    city: Faker::Address.city,
+                    state: Faker::Address.state,
+                    zip_code: Faker::Address.zip_code)
+end
+marinas = Marina.all
+marina_ids = marinas.map(&:id)
 
 clients = Client.all
 clients.each do |client|
@@ -35,6 +45,7 @@ clients.each do |client|
                  engine_count: Random.new.rand(10),
                  hailing_port: Faker::Address.city,
                  year: rand(1950..2018),
-                 client_id: client.id)
+                 client_id: client.id,
+                 marina_id: marina_ids.sample)
   end
 end

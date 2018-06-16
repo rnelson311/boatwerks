@@ -6,10 +6,11 @@
           %div{:class => "col-.5"}
             %button.btn-xs{"data-target" => "#collapse_#{boat.id}_target", "data-toggle" => "collapse"}
               +
-          .col
+          .col-3.text-white
             %h5= boat.name.humanize
-          .col
-            Marina information will go here
+          .col-6.text-white
+            %strong Marina:
+            = boat.marina.name + " " + boat.marina.display_address
           .col
             = link_to 'View', boat, class: 'btn btn-sm float-right text-white'
       .collapse{:id => "collapse_#{boat.id}_target", "aria-labelledby" => "collapse_#{boat.id}", "data-parent" => "#accordion_#{boat.id}"}

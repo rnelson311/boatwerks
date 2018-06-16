@@ -1,0 +1,25 @@
+= form_for @marina do |f|
+  - if @marina.errors.any?
+    = render = errors_for(@marina)
+  %br
+  .form-group-row
+    = f.label :name, 'Marina Name', :class => 'col-sm-2'
+    = f.text_field :name, :class => 'col-sm-6'
+  .form-group-row
+    = f.label :address1, 'Address 1', :class => 'col-sm-2'
+    = f.text_field :address1, :class => 'col-sm-6'
+  .form-group-row
+    = f.label :address2, 'Address2', :class => 'col-sm-2'
+    = f.text_field :address2, :class => 'col-sm-6'
+  .form-group-row
+    = f.label :city, 'City', :class => 'col-sm-2'
+    = f.text_field :city, :class => 'col-sm-6'
+  .form-group-row
+    = f.label :state, 'State', :class => 'col-sm-2'
+    = f.text_field :state, :class => 'col-sm-6'
+  .form-group-row
+    = f.label :zip_code, 'Zip Code', :class => 'col-sm-2'
+    = f.text_field :zip_code, :class => 'col-sm-6'
+  %br
+  .actions
+    = f.submit 'Save', :class => "btn btn-sm btn-primary text-white"

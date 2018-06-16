@@ -6,4 +6,5 @@ class Boat < ApplicationRecord
   FUEL_TYPE     = %w(gas diesel biodiesel other)
   PROPULSION    = %w(inboard outboard sterndrive other)
   belongs_to :client
+  belongs_to :marina
 end
