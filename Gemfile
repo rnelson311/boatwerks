@@ -15,19 +15,18 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'haml'
-gem "haml-rails", "~> 1.0"
+gem 'haml-rails', '~> 1.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'faker'
 gem 'factory_bot_rails'
-
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-rails'
   gem 'rspec'
   gem 'rspec-rails'
-  gem "guard"
-  gem "guard-rspec"
+  gem 'guard'
+  gem 'guard-rspec'
   gem 'rubocop', require: false
 end
 
