@@ -1,3 +1,5 @@
+%br
+= link_to 'New Boat', new_boat_path(:client_id=>@client.id), class: "btn btn-sm btn-primary text-white"
 - @client.boats.each do |boat|
   %div{:id => "accordion_#{boat.id}"}
     .card.mt-3.border-primary

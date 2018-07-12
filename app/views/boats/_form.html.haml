@@ -4,9 +4,9 @@
   %br
   .form-group-row
     = f.label :client_id, 'Client', :class => 'col-sm-2'
-    - if @boat.client != nil
-      = f.text_field :client_id, :value => Client.find(@boat.client.id).name, :disabled => true, :class => "col-sm-6"
-      = f.hidden_field :client_id, :value => @boat.client.id
+    - if (params[:client_id])
+      = f.text_field :client_id, :value => Client.find(params[:client_id]).name, :disabled => true, :class => "col-sm-6"
+      = f.hidden_field :client_id, :value => params[:client_id]
     - else
       = f.collection_select(:client_id, Client.all, :id, :name, class: "form-control")
   .form-group-row
@@ -15,7 +15,7 @@
       = f.text_field :marina_id, :value => Marina.find(@boat.marina.id).name, :disabled => true, :class => "col-sm-6"
       = f.hidden_field :marina_id, :value => @boat.marina.id
     - else
-      = f.collection_select(:client_id, Marina.all, :id, :name, class: "form-control")
+      = f.collection_select(:marina_id, Marina.all, :id, :name, class: "form-control")
   .form-group-row
     = f.label :name, 'Boat Name', :class => 'col-sm-2'
     = f.text_field :name, :class => 'col-sm-6'
