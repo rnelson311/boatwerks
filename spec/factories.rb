@@ -1,4 +1,12 @@
 FactoryBot.define do
+  factory :invoice_item do
+    invoice nil
+    description "MyString"
+    unit_cost 1.5
+    quantity 1
+    discount 1.5
+    amount 1.5
+  end
   factory :invoice do
     client nil
     boat nil

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_12_053923) do
+ActiveRecord::Schema.define(version: 2018_07_12_054330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,18 @@ ActiveRecord::Schema.define(version: 2018_07_12_053923) do
     t.string "zip_code"
   end
 
+  create_table "invoice_items", force: :cascade do |t|
+    t.bigint "invoice_id"
+    t.string "description"
+    t.float "unit_cost"
+    t.integer "quantity"
+    t.float "discount"
+    t.float "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["invoice_id"], name: "index_invoice_items_on_invoice_id"
+  end
+
   create_table "invoices", force: :cascade do |t|
     t.bigint "client_id"
     t.bigint "boat_id"
@@ -76,6 +88,7 @@ ActiveRecord::Schema.define(version: 2018_07_12_053923) do
   end
 
   add_foreign_key "boats", "clients"
+  add_foreign_key "invoice_items", "invoices"
   add_foreign_key "invoices", "boats"
   add_foreign_key "invoices", "clients"
 end

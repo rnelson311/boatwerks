@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Invoice:
+  = @invoice_item.invoice
+%p
+  %b Description:
+  = @invoice_item.description
+%p
+  %b Unit cost:
+  = @invoice_item.unit_cost
+%p
+  %b Quantity:
+  = @invoice_item.quantity
+%p
+  %b Discount:
+  = @invoice_item.discount
+%p
+  %b Amount:
+  = @invoice_item.amount
+
+= link_to 'Edit', edit_invoice_item_path(@invoice_item)
+\|
+= link_to 'Back', invoice_items_path
