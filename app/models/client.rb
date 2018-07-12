@@ -1,6 +1,7 @@
 class Client < ApplicationRecord
 
   has_many :boats
+  has_many :invoices
   before_save :downcase_email
 
   validates :first_name,  presence: true, length: { maximum: 50 }
