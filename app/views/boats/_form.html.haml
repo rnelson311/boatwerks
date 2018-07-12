@@ -15,7 +15,7 @@
       = f.text_field :marina_id, :value => Marina.find(@boat.marina.id).name, :disabled => true, :class => "col-sm-6"
       = f.hidden_field :marina_id, :value => @boat.marina.id
     - else
-      = f.collection_select(:client_id, Marina.all, :id, :name, class: "form-control")
+      = f.collection_select(:marina_id, Marina.all, :id, :name, class: "form-control")
   .form-group-row
     = f.label :name, 'Boat Name', :class => 'col-sm-2'
     = f.text_field :name, :class => 'col-sm-6'
