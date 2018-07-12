@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :invoices
   resources :marinas
   resources :boats
   root 'static_pages#home'

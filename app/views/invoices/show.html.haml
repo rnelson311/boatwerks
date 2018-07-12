@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Client:
+  = @invoice.client
+%p
+  %b Boat:
+  = @invoice.boat
+%p
+  %b Date:
+  = @invoice.date
+%p
+  %b Tax:
+  = @invoice.tax
+%p
+  %b Subtotal:
+  = @invoice.subtotal
+%p
+  %b Total:
+  = @invoice.total
+%p
+  %b Is payed:
+  = @invoice.is_payed
+
+= link_to 'Edit', edit_invoice_path(@invoice)
+\|
+= link_to 'Back', invoices_path
