@@ -18,8 +18,8 @@
         %strong Owner:
         = @boat.client.name
       .col
-        %strong Hailing Port:
-        = @boat.hailing_port
+        %strong Marina:
+        = @boat.marina.name
   .card-body
     .row
       .col
@@ -46,6 +46,8 @@
         %strong Boat Construction:
         = @boat.construction.humanize
       .col
+        %strong Hailing Port:
+        = @boat.hailing_port
     %hr
     .row
       .col
