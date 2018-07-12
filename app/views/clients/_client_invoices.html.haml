@@ -1,0 +1,5 @@
+%br
+= link_to "New Invoice", new_invoice_path(:client_id=>@client.id), class: "btn btn-sm btn-primary text-white"
+%br
+- @client.invoices.each do |invoice|
+  = invoice.boat.name
