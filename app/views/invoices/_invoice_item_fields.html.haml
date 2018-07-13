@@ -1,6 +1,19 @@
-.container
-  .nested-fields.row
-    .field.col
-      = f.text_field :description, placeholder: 'Description'
-    .col
-      = link_to_remove_association "remove item", f
+.card
+  .card-body
+    .row
+      .col-sm-12
+        .nested-fields.row
+          .field.col-sm-6
+            = f.label :description
+            = f.text_field :description, placeholder: 'Description', class: 'form-control'
+          .field.col-sm-2
+            = f.label :unit_cost, 'Unit Cost'
+            = f.number_field :unit_cost, value: number_to_currency(f.object.amount.to_f, delimiter: '', unit: ''), step: :any, class: 'form-control'
+          .field.col-sm-1
+            = f.label :quantity, 'Quantity'
+            = f.number_field :quantity, placeholder: 1, class: 'form-control'
+          .field.col-sm-2
+            = f.label :discount, 'Discount'
+            = f.number_field :discount, value: number_to_currency(f.object.amount.to_f, delimiter: '', unit: ''), step: :any, class: 'form-control'
+          .col-sm-1
+            = link_to_remove_association "remove", f

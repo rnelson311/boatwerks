@@ -21,15 +21,16 @@
   .field
     = f.label :tax
     = f.text_field :tax
-  .field
-    = f.label :subtotal
-    = f.text_field :subtotal
-  .field
-    = f.label :total
-    = f.text_field :total
-  .field
-    = f.label :is_payed
-    = f.check_box :is_payed
+  - if @invoice.id
+    .field
+      = f.label :subtotal
+      = f.text_field :subtotal
+    .field
+      = f.label :total
+      = f.text_field :total
+    .field
+      = f.label :is_payed
+      = f.check_box :is_payed
   .actions
     = f.submit 'Save'
 
