@@ -1,4 +1,5 @@
 class InvoicesController < ApplicationController
+  include
   before_action :set_invoice, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -17,6 +18,8 @@ class InvoicesController < ApplicationController
 
   def create
     @invoice = Invoice.new(invoice_params)
+    @invoice_items = @invoice.invoice_items
+    UpdateInvoices.new( {invoice: @invoice, invoice_items: @invoice_items} ).perform
 
     respond_to do |format|
       if @invoice.save
