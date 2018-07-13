@@ -1,5 +1,51 @@
-%p#notice= notice
-
+%br
+.card.border-primary
+  .card-header.bg-primary.text-white
+    %h6 Invoice # #{@invoice.id}
+  .card-body
+    .row
+      .col
+        .card.border-primary
+          .card-header.bg-primary.text-white
+            Client Information
+          .card-body
+            = @invoice.client.name
+            %br
+            = @invoice.client.address1
+            %br
+            = @invoice.client.city
+            #{@invoice.client.state}, #{@invoice.client.zip_code}
+            %br
+            = number_to_phone(@invoice.client.phone)
+      .col
+        .card.border-primary
+          .card-header.bg-primary.text-white
+            Boat Information
+          .card-body
+            = @invoice.boat.name
+            %br
+            = @invoice.boat.marina.name
+            %br
+            = @invoice.boat.marina.address1
+            %br
+            = @invoice.boat.marina.city
+            #{@invoice.boat.marina.state}, #{@invoice.boat.marina.zip_code}
+    .row.my-1
+      .col
+        .card.border-primary
+          .card-header.bg-primary.text-white
+            Financials
+          .card-body
+            .row
+              .col
+                %strong Payed:
+                = @invoice.is_payed
+              .col
+                %strong Subtotal:
+                = @invoice.subtotal
+              .col
+                %strong Total:
+                = @invoice.total
 %p
   %b Client:
   = @invoice.client

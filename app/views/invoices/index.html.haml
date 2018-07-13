@@ -1,13 +1,14 @@
-%h1 Listing invoices
-
-%table
-  %thead
+%br
+%h3 Invoices
+.row
+  .col
+    = link_to '+Add Invoice', new_invoice_path, class: "btn btn-sm btn-primary float-right"
+%table.table.table-striped
+  %thead.Primary
     %tr
       %th Client
       %th Boat
       %th Date
-      %th Tax
-      %th Subtotal
       %th Total
       %th Is payed
       %th
@@ -17,11 +18,9 @@
   %tbody
     - @invoices.each do |invoice|
       %tr
-        %td= invoice.client
-        %td= invoice.boat
+        %td= invoice.client.name
+        %td= invoice.boat.name
         %td= invoice.date
-        %td= invoice.tax
-        %td= invoice.subtotal
         %td= invoice.total
         %td= invoice.is_payed
         %td= link_to 'Show', invoice
@@ -29,5 +28,3 @@
         %td= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
-
-= link_to 'New Invoice', new_invoice_path
