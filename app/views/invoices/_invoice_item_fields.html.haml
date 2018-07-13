@@ -1,0 +1,6 @@
+.container
+  .nested-fields.row
+    .field.col
+      = f.text_field :description, placeholder: 'Description'
+    .col
+      = link_to_remove_association "remove item", f

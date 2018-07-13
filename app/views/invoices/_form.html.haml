@@ -9,9 +9,12 @@
       = f.hidden_field :client_id, :value => params[:client_id]
     - else
       = f.collection_select(:client_id, Client.all, :id, :name, class: "form-control")
-  .field
-    = f.label :boat
-    = f.collection_select(:boat_id, Boat.where(client: params[:client_id]), :id, :name, class: "form-control")
+  .form-group-row
+    = f.label :boat_id, 'Boat', :class => 'col-sm-2'
+    - if (params[:client_id])
+      = f.collection_select(:boat_id, Boat.where(client: params[:client_id]), :id, :name, class: "form-control")
+    - else
+      = f.collection_select(:boat_id, Boat.all, :id, :name, class: "form-control")
   .field
     = f.label :date
     = f.date_select :date
@@ -29,3 +32,8 @@
     = f.check_box :is_payed
   .actions
     = f.submit 'Save'
+
+    = f.fields_for :invoice_items do |invoice_item|
+      = render 'invoice_item_fields', :f => invoice_item
+    .links
+      = link_to_add_association 'Add Item', f, :invoice_items
