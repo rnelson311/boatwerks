@@ -1,5 +1,4 @@
 class InvoicesController < ApplicationController
-  include
   before_action :set_invoice, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -14,6 +13,9 @@ class InvoicesController < ApplicationController
   end
 
   def edit
+    @invoice = Invoice.find(params[:id])
+    @invoice_items = @invoice.invoice_items
+    UpdateInvoices.new( {invoice: @invoice, invoice_items: @invoice_items} ).perform
   end
 
   def create

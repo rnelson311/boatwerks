@@ -1,7 +1,11 @@
 %br
 .card.border-primary
   .card-header.bg-primary.text-white
-    %h6 Invoice # #{@invoice.id}
+    .row
+      .col
+        %h6 Invoice # #{@invoice.id}
+      .col
+        Invoice Date: #{@invoice.date.strftime('%m-%d-%Y')}
   .card-body
     .row
       .col
@@ -30,7 +34,7 @@
             %br
             = @invoice.boat.marina.city
             #{@invoice.boat.marina.state}, #{@invoice.boat.marina.zip_code}
-    .row.my-1
+    .row.my-1.mt-3
       .col
         .card.border-primary
           .card-header.bg-primary.text-white
@@ -42,32 +46,36 @@
                 = @invoice.is_payed
               .col
                 %strong Subtotal:
-                = @invoice.subtotal
+                = number_to_currency(@invoice.subtotal)
               .col
                 %strong Total:
-                = @invoice.total
-%p
-  %b Client:
-  = @invoice.client
-%p
-  %b Boat:
-  = @invoice.boat
-%p
-  %b Date:
-  = @invoice.date
-%p
-  %b Tax:
-  = @invoice.tax
-%p
-  %b Subtotal:
-  = @invoice.subtotal
-%p
-  %b Total:
-  = @invoice.total
-%p
-  %b Is payed:
-  = @invoice.is_payed
-
-= link_to 'Edit', edit_invoice_path(@invoice)
+                = number_to_currency(@invoice.total)
+    .row.my-1.mt-3
+      .card.border-primary.mx-3
+        .card-header.bg-primary.text-white
+          .row
+            .col
+              Line Items
+        .card-body
+          .row
+            .col
+              %table.table.table-striped.border
+                %thead.Primary
+                  %tr
+                    %th.col-sm-4 Description
+                    %th Unit Cost
+                    %th Quantity
+                    %th Discount
+                    %th Amount
+                %tbody
+                  - @invoice.invoice_items.each do |line_item|
+                    %tr
+                      %td= line_item.description
+                      %td= number_to_currency(line_item.unit_cost)
+                      %td= line_item.quantity
+                      %td= number_to_currency(line_item.discount)
+                      %td= number_to_currency(line_item.amount)
+%br
+= link_to 'Edit', edit_invoice_path(@invoice), class: 'btn btn-sm btn-primary text-white'
 \|
-= link_to 'Back', invoices_path
+= link_to 'Back', invoices_path, class: 'btn btn-sm btn-primary text-white'
