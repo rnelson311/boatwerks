@@ -1,5 +1,26 @@
 %br
 = link_to "New Invoice", new_invoice_path(:client_id=>@client.id), class: "btn btn-sm btn-primary text-white"
 %br
-- @client.invoices.each do |invoice|
-  = invoice.boat.name
+%table.table.table-striped
+  %thead.Primary
+    %tr
+      %th Invoice #
+      %th Boat
+      %th Date
+      %th Total
+      %th Payment
+      %th
+      %th
+      %th
+
+  %tbody
+    - @client.invoices.each do |invoice|
+      %tr
+        %td= invoice.id
+        %td= invoice.boat.name
+        %td= invoice.date
+        %td= invoice.total
+        %td= invoice.is_payed
+        %td= link_to 'Show', invoice
+        %td= link_to 'Edit', edit_invoice_path(invoice)
+        %td= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' }
