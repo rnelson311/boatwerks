@@ -5,26 +5,19 @@ class InvoicesController < ApplicationController
     @invoices = Invoice.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @invoice = Invoice.new
   end
 
-  def edit
-    @invoice = Invoice.find(params[:id])
-    @invoice_items = @invoice.invoice_items
-    UpdateInvoices.new( {invoice: @invoice, invoice_items: @invoice_items} ).perform
-  end
+  def edit; end
 
   def create
     @invoice = Invoice.new(invoice_params)
-    @invoice_items = @invoice.invoice_items
-    UpdateInvoices.new( {invoice: @invoice, invoice_items: @invoice_items} ).perform
-
     respond_to do |format|
       if @invoice.save
+        UpdateInvoices.new(@invoice).call
         format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
         format.json { render :show, status: :created, location: @invoice }
       else
@@ -35,8 +28,10 @@ class InvoicesController < ApplicationController
   end
 
   def update
+    @invoice = Invoice.find(params[:id])
     respond_to do |format|
       if @invoice.update(invoice_params)
+        UpdateInvoices.new(@invoice).call
         format.html { redirect_to @invoice, notice: 'Invoice was successfully updated.' }
         format.json { render :show, status: :ok, location: @invoice }
       else
@@ -55,12 +50,13 @@ class InvoicesController < ApplicationController
   end
 
   private
-    def set_invoice
-      @invoice = Invoice.find(params[:id])
-    end
 
-    def invoice_params
-      params.require(:invoice).permit(:client_id, :boat_id, :date, :tax, :subtotal, :total, :is_payed,
-                                      invoice_items_attributes: [:id, :description, :unit_cost, :quantity, :discount, :_destroy])
-    end
+  def set_invoice
+    @invoice = Invoice.find(params[:id])
+  end
+
+  def invoice_params
+    params.require(:invoice).permit(:client_id, :boat_id, :date, :tax, :subtotal, :total, :is_payed,
+                                    invoice_items_attributes: [:id, :description, :unit_cost, :quantity, :discount, :_destroy])
+  end
 end

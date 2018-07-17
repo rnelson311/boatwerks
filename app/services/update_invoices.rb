@@ -1,10 +1,9 @@
 class UpdateInvoices
-  def initialize(params)
-    @invoice = params[:invoice]
-    @invoice_items = params[:invoice_items]
+  def initialize(invoice)
+    @invoice = invoice
   end
 
-  def perform
+  def call
     update_invoice_item_totals
     update_invoice_totals
   end
@@ -12,9 +11,9 @@ class UpdateInvoices
   private
 
   def update_invoice_item_totals
-    @invoice_items.each do |line_item|
-      line_item.amount = (line_item.quantity * line_item.unit_cost) - line_item.discount
-      line_item.save!
+    @invoice.invoice_items.each do |invoice_item|
+      invoice_item.amount = (invoice_item.unit_cost * invoice_item.quantity) - invoice_item.discount
+      invoice_item.save
     end
   end
 
