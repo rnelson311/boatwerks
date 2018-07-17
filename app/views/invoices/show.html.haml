@@ -6,6 +6,16 @@
         %h6 Invoice # #{@invoice.id}
       .col
         Invoice Date: #{@invoice.date.strftime('%m-%d-%Y')}
+      .col
+        - if @invoice.is_quote
+          %h6.float-right Quote
+        - else
+          %h6.float-right Work Order
+      .col
+        - if @invoice.is_payed
+          %h6 Paid
+        - else
+          %h6 Not Paid
   .card-body
     .row
       .col
@@ -41,9 +51,6 @@
             Financials
           .card-body
             .row
-              .col
-                %strong Payed:
-                = @invoice.is_payed
               .col
                 %strong Subtotal:
                 = number_to_currency(@invoice.subtotal)

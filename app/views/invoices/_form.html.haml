@@ -27,9 +27,13 @@
       = f.text_field :tax, :class => "form-control"
   - if @invoice.id
     .form-group.row
+      = f.label :is_quote, 'Quote/Work Order', :class => "col-sm-2 col-form-label"
+      .col-sm-10
+        = f.select :is_quote, [['Quote', true], ['Work Order', false]], :class => "form-control"
+    .form-group.row
       = f.label :is_payed, 'Invoice Paid', :class => "col-sm-2 col-form-label"
       .col-sm-10
-        = f.check_box :is_payed, :class => "form-control"
+        = f.select :is_payed, [['Paid', true], ['Not Paid', false]], :class => "form-control"
   .actions
     = f.submit 'Save', class: "btn btn-sm btn-primary"
     %br
