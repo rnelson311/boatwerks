@@ -1,0 +1,90 @@
+%br
+.card.border-primary
+  .card-header.bg-primary.text-white
+    .row
+      .col
+        %h6 Invoice # #{@invoice.id}
+      .col
+        Invoice Date: #{@invoice.date.strftime('%m-%d-%Y')}
+      .col
+        - if @invoice.is_quote
+          %h6.float-right Quote
+        - else
+          %h6.float-right Work Order
+      .col
+        - if @invoice.is_payed
+          %h6 Paid
+        - else
+          %h6 Not Paid
+  .card-body
+    .row
+      .col
+        .card.border-primary
+          .card-header.bg-primary.text-white
+            Client Information
+          .card-body
+            = @invoice.client.name
+            %br
+            = @invoice.client.address1
+            %br
+            = @invoice.client.city
+            #{@invoice.client.state}, #{@invoice.client.zip_code}
+            %br
+            = number_to_phone(@invoice.client.phone)
+      .col
+        .card.border-primary
+          .card-header.bg-primary.text-white
+            Boat Information
+          .card-body
+            = @invoice.boat.name
+            %br
+            = @invoice.boat.marina.name
+            %br
+            = @invoice.boat.marina.address1
+            %br
+            = @invoice.boat.marina.city
+            #{@invoice.boat.marina.state}, #{@invoice.boat.marina.zip_code}
+    .row.my-1.mt-3
+      .col
+        .card.border-primary
+          .card-header.bg-primary.text-white
+            Financials
+          .card-body
+            .row
+              .col
+                %strong Subtotal:
+                = number_to_currency(@invoice.subtotal)
+              .col
+                %strong Total:
+                = number_to_currency(@invoice.total)
+    .row.my-1.mt-3
+      .card.border-primary.mx-3
+        .card-header.bg-primary.text-white
+          .row
+            .col
+              Line Items
+        .card-body
+          .row
+            .col
+              %table.table.table-striped.border
+                %thead.Primary
+                  %tr
+                    %th.col-sm-4 Description
+                    %th Unit Cost
+                    %th Quantity
+                    %th Discount
+                    %th Amount
+                %tbody
+                  - @invoice.invoice_items.each do |line_item|
+                    %tr
+                      %td= line_item.description
+                      %td= number_to_currency(line_item.unit_cost)
+                      %td= line_item.quantity
+                      %td= number_to_currency(line_item.discount)
+                      %td= number_to_currency(line_item.amount)
+%br
+= link_to 'Edit', edit_invoice_path(@invoice), class: 'btn btn-sm btn-primary text-white'
+\|
+= link_to 'Back', invoices_path, class: 'btn btn-sm btn-primary text-white'
+\|
+= link_to 'Clone', invoice_clone_path(@invoice), class: 'btn btn-sm btn-primary text-white'

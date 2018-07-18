@@ -10,11 +10,11 @@
   .nav.nav-tabs{:id => 'nav-tab', :role => 'tab-list'}
     %a{:class => 'nav-item nav-link active', :id => 'nav-personal-tab', "data-toggle" => "tab", :href => "#nav-personal", :role => "tab", "aria-controls" => "nav-home", "aria-selected" => "true"} Personal
     %a{:class => 'nav-item nav-link', :id => 'nav-boat-tab', "data-toggle" => "tab", :href => "#nav-boats", :role => "tab", "aria-controls" => "nav-home", "aria-selected" => "false"} Boats
-    %a{:class => 'nav-item nav-link', :id => 'nav-orders-tab', "data-toggle" => "tab", :href => "#nav-orders", :role => "tab", "aria-controls" => "nav-home", "aria-selected" => "false"} Orders
+    %a{:class => 'nav-item nav-link', :id => 'nav-invoices-tab', "data-toggle" => "tab", :href => "#nav-invoices", :role => "tab", "aria-controls" => "nav-home", "aria-selected" => "false"} Invoices
 .tab-content#nav-tabContent
   .tab-pane.fade.show.active{:id => "nav-personal", :role => "tabpanel", "aria-labelledby" => "nav-personal-tab"}
     = render 'client_personal'
   .tab-pane.fade{:id => "nav-boats", :role => "tabpanel", "aria-labelledby" => "nav-boats-tab"}
     = render 'client_boats'
-  .tab-pane.fade{:id => "nav-orders", :role => "tabpanel", "aria-labelledby" => "nav-orders-tab"}
-    %p Orders will go here
+  .tab-pane.fade{:id => "nav-invoices", :role => "tabpanel", "aria-labelledby" => "nav-invoices-tab"}
+    = render 'client_invoices'

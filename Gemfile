@@ -18,6 +18,7 @@ gem 'haml'
 gem 'haml-rails', '~> 1.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'faker'
+gem "cocoon"
 gem 'factory_bot_rails'
 
 group :development, :test do

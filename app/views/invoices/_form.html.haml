@@ -1,0 +1,44 @@
+= form_for @invoice do |f|
+  - if @invoice.errors.any?
+    = render = errors_for(@invoice)
+  %br
+  .form-group.row
+    = f.label :client_id, 'Client', :class => 'col-sm-2'
+    .col-sm-10
+      - if (params[:client_id])
+        = f.text_field :client_id, :value => Client.find(params[:client_id]).name, :disabled => true, :class => "col-sm-6"
+        = f.hidden_field :client_id, :value => params[:client_id]
+      - else
+        = f.collection_select(:client_id, Client.all, :id, :name, class: "form-control")
+  .form-group.row
+    = f.label :boat_id, 'Boat', :class => 'col-sm-2'
+    .col-sm-10
+      - if (params[:client_id])
+        = f.collection_select(:boat_id, Boat.where(client: params[:client_id]), :id, :name, class: "form-control")
+      - else
+        = f.collection_select(:boat_id, Boat.all, :id, :name, class: "form-control")
+  .form-group.row
+    = f.label :date, :class => 'col-sm-2'
+    .col-sm-10
+      = f.date_select :date, :class => 'form-control'
+  .form-group.row
+    = f.label :tax, 'Tax Rate', :class => "col-sm-2 col-form-label"
+    .col-sm-10
+      = f.text_field :tax, :class => "form-control"
+  - if @invoice.id
+    .form-group.row
+      = f.label :is_quote, 'Quote/Work Order', :class => "col-sm-2 col-form-label"
+      .col-sm-10
+        = f.select :is_quote, [['Quote', true], ['Work Order', false]], :class => "form-control"
+    .form-group.row
+      = f.label :is_payed, 'Invoice Paid', :class => "col-sm-2 col-form-label"
+      .col-sm-10
+        = f.select :is_payed, [['Paid', true], ['Not Paid', false]], :class => "form-control"
+  .actions
+    = f.submit 'Save', class: "btn btn-sm btn-primary"
+    %br
+    %br
+    = f.fields_for :invoice_items do |invoice_item|
+      = render 'invoice_item_fields', :f => invoice_item
+    .links
+      = link_to_add_association 'Add Item', f, :invoice_items, class: "btn btn-sm"

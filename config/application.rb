@@ -29,5 +29,6 @@ module Boatwerks
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.autoload_paths += %W(#{config.root}/app)
   end
 end

@@ -1,4 +1,21 @@
 FactoryBot.define do
+  factory :invoice_item do
+    invoice nil
+    description "MyString"
+    unit_cost 1.5
+    quantity 1
+    discount 1.5
+    amount 1.5
+  end
+  factory :invoice do
+    client nil
+    boat nil
+    date "2018-07-12"
+    tax 1.5
+    subtotal 1.5
+    total 1.5
+    is_payed false
+  end
   factory :marina do
     name Faker::Company.name
     address1 Faker::Address.street_address

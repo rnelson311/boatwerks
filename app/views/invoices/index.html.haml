@@ -1,0 +1,32 @@
+%br
+%h3 Invoices
+.row
+  .col
+    = link_to '+Add Invoice', new_invoice_path, class: "btn btn-sm btn-primary float-right"
+%table.table.table-striped
+  %thead.Primary
+    %tr
+      %th Invoice ID
+      %th Client
+      %th Boat
+      %th Date
+      %th Total
+      %th Is payed
+      %th
+      %th
+      %th
+
+  %tbody
+    - @invoices.each do |invoice|
+      %tr
+        %td= invoice.id
+        %td= invoice.client.name
+        %td= invoice.boat.name
+        %td= invoice.date
+        %td= invoice.total
+        %td= invoice.is_payed
+        %td= link_to 'Show', invoice
+        %td= link_to 'Edit', edit_invoice_path(invoice)
+        %td= link_to 'Destroy', invoice, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
