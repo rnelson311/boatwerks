@@ -49,6 +49,14 @@ class InvoicesController < ApplicationController
     end
   end
 
+  def clone
+    @invoice = Invoice.find(params[:invoice_id])
+    new_invoice = @invoice.clone
+    new_invoice.save
+
+    redirect_to invoices_path
+  end
+
   private
 
   def set_invoice

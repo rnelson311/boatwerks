@@ -6,6 +6,7 @@
 %table.table.table-striped
   %thead.Primary
     %tr
+      %th Invoice ID
       %th Client
       %th Boat
       %th Date
@@ -18,6 +19,7 @@
   %tbody
     - @invoices.each do |invoice|
       %tr
+        %td= invoice.id
         %td= invoice.client.name
         %td= invoice.boat.name
         %td= invoice.date
