@@ -25,11 +25,11 @@
     = f.label :tax, 'Tax Rate', :class => "col-sm-2 col-form-label"
     .col-sm-10
       = f.text_field :tax, :class => "form-control"
+  .form-group.row
+    = f.label :is_quote, 'Quote/Work Order', :class => "col-sm-2 col-form-label"
+    .col-sm-10
+      = f.select :is_quote, [['Quote', true], ['Work Order', false]], :class => "form-control"
   - if @invoice.id
-    .form-group.row
-      = f.label :is_quote, 'Quote/Work Order', :class => "col-sm-2 col-form-label"
-      .col-sm-10
-        = f.select :is_quote, [['Quote', true], ['Work Order', false]], :class => "form-control"
     .form-group.row
       = f.label :is_payed, 'Invoice Paid', :class => "col-sm-2 col-form-label"
       .col-sm-10
