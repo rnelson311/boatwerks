@@ -7,45 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-20.times do
-  FactoryBot.create(:client, first_name: Faker::Name.first_name,
-                    last_name: Faker::Name.last_name,
-                    email: Faker::Internet.email,
-                    phone: Faker::PhoneNumber.phone_number,
-                    address1: Faker::Address.street_address,
-                    address2: Faker::Address.secondary_address,
-                    city: Faker::Address.city,
-                    state: Faker::Address.state,
-                    zip_code: Faker::Address.zip_code)
-end
-5.times do
-  FactoryBot.create(:marina, name: Faker::Company.name,
-                    address1: Faker::Address.street_address,
-                    address2: Faker::Address.secondary_address,
-                    city: Faker::Address.city,
-                    state: Faker::Address.state,
-                    zip_code: Faker::Address.zip_code)
-end
-marinas = Marina.all
-marina_ids = marinas.map(&:id)
-
-clients = Client.all
-clients.each do |client|
-  Random.new.rand(3).times do
-    Boat.create!(name: Faker::Lorem.word,
-                 manufacturer: Faker::StarWars.vehicle,
-                 model: Faker::StarWars.droid,
-                 boat_type: %w(power sail).sample,
-                 identification: Faker::Code.asin,
-                 construction: %w(fiberglass wood cement steel other).sample,
-                 configuration: %w(ketch sloop yawl trawler sedan cabin cutty other).sample,
-                 fuel_type: %w(gas diesel biodiesal other).sample,
-                 propulsion: %w(inboard outboard sterndrive other).sample,
-                 engine: Faker::StarWars.call_sign,
-                 engine_count: Random.new.rand(10),
-                 hailing_port: Faker::Address.city,
-                 year: rand(1950..2018),
-                 client_id: client.id,
-                 marina_id: marina_ids.sample)
-  end
-end
+Admin.create!(email: 'admin@admin.com', password: 'admin01', password_confirmation: 'admin01')
