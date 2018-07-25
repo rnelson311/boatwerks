@@ -1,4 +1,5 @@
 class InvoicesController < ApplicationController
+  before_action :authenticate_admin!
   before_action :set_invoice, only: [:show, :edit, :update, :destroy]
 
   def index
