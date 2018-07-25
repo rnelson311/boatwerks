@@ -1,4 +1,7 @@
 FactoryBot.define do
+  factory :admin do
+    
+  end
   factory :invoice_item do
     invoice nil
     description "MyString"
